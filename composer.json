@@ -1,0 +1,24 @@
+{
+  "name": "aggrosoft/oxid-webpack-theme-loader",
+  "description": "Allow using themes built with wave-webpack-build.",
+  "type": "oxideshop-module",
+  "keywords": ["oxid", "modules", "eShop"],
+  "homepage": "https://github.com/aggrosoft/oxid-webpack-theme-loader",
+  "license": "MIT",
+  "extra": {
+    "oxideshop": {
+      "blacklist-filter": [
+        "documentation/**/*.*"
+      ],
+      "target-directory": "agwebpackthemeloader"
+    }
+  },
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Aggrosoft\\WebpackThemeLoader\\": "../../../source/modules/agwebpackthemeloader"
+    }
+  }
+}
