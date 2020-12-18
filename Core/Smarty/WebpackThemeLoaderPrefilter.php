@@ -7,13 +7,23 @@ use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\Mod
 
 class WebpackThemeLoaderPrefilter
 {
-    public function prefilter($tpl_source, &$smarty)
+    public static function prefilter($tpl_source, &$smarty)
     {
+        $scripts = self::getJSBlacklist();
+        $css = self::getCSSBlacklist();
+
+        foreach($scripts as $script) {
+            $tpl_source = preg_replace('/\[\{oxscript.*include="'.preg_quote($script, '/').'".*\}\]/', '', $tpl_source) . "\n\n";
+        }
+
+        foreach($css as $stylesheet) {
+            $tpl_source = preg_replace('/\[\{oxstyle.*include="'.preg_quote($stylesheet, '/').'".*\}\]/', '', $tpl_source)  . "\n\n";
+        }
 
         return $tpl_source;
     }
 
-    protected function getCSSBlacklist ()
+    protected static function getCSSBlacklist ()
     {
         $moduleSettingBridge = ContainerFactory::getInstance()
             ->getContainer()
@@ -21,7 +31,7 @@ class WebpackThemeLoaderPrefilter
         return $moduleSettingBridge->get('aCSSBlacklist', 'agwebpackthemeloader');
     }
 
-    protected function getJSBlacklist ()
+    protected static function getJSBlacklist ()
     {
         $moduleSettingBridge = ContainerFactory::getInstance()
             ->getContainer()
