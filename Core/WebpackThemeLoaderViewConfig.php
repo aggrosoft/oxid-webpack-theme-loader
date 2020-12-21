@@ -12,7 +12,7 @@ class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
     {
         $entrypoints = $this->getControllerEntryPoints($controller ?: $this->getActiveClassName());
         if ($entrypoints) {
-            return $entrypoints->css;
+            return $this->stripResourceDir($entrypoints->css);
         }
     }
 
@@ -20,8 +20,16 @@ class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
     {
         $entrypoints = $this->getControllerEntryPoints($controller ?: $this->getActiveClassName());
         if ($entrypoints) {
-            return $entrypoints->js;
+            return $this->stripResourceDir($entrypoints->js);
         }
+    }
+
+    protected function stripResourceDir ($files) {
+        $resourceDir = $this->getConfig()->getResourceDir(false);
+        $dir = str_replace(getShopBasePath(), '/', $resourceDir);
+        return array_map(function($d) use ($dir) {
+            return str_replace($dir, '', $d);
+        }, $files);
     }
 
     protected function getControllerEntryPoints ($controller)
