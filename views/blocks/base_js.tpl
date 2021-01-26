@@ -1,7 +1,7 @@
 [{$smarty.block.parent}]
 [{assign var=jsAssets value=$oViewConf->getWebpackJavascriptFiles('main')}]
 [{foreach from=$jsAssets item=asset}]
-    [{oxscript include=$asset|ltrim:'/'}]
+    [{oxscript include=$asset|ltrim:'/' priority=1}]
 [{/foreach}]
 
 [{assign var=jsAssets value=$oViewConf->getWebpackJavascriptFiles()}]

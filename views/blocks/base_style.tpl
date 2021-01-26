@@ -1,7 +1,7 @@
 [{$smarty.block.parent}]
 [{assign var=jsAssets value=$oViewConf->getWebpackCSSFiles('main')}]
 [{foreach from=$jsAssets item=asset}]
-    [{oxstyle include=$asset|ltrim:'/'}]
+    [{oxstyle include=$asset|ltrim:'/' priority=1}]
 [{/foreach}]
 
 [{assign var=jsAssets value=$oViewConf->getWebpackCSSFiles()}]
