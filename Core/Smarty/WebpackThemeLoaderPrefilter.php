@@ -13,11 +13,11 @@ class WebpackThemeLoaderPrefilter
         $css = self::getCSSBlacklist();
 
         foreach($scripts as $script) {
-            $tpl_source = preg_replace('/\[\{oxscript.*include="'.preg_quote($script, '/').'".*\}\]/', '', $tpl_source) . "\n\n";
+            $tpl_source = preg_replace('/\[\{oxscript.*include="?.*'.preg_quote($script, '/').'.*"?.*\}\]/', '', $tpl_source) . "\n\n";
         }
 
         foreach($css as $stylesheet) {
-            $tpl_source = preg_replace('/\[\{oxstyle.*include="'.preg_quote($stylesheet, '/').'".*\}\]/', '', $tpl_source)  . "\n\n";
+            $tpl_source = preg_replace('/\[\{oxstyle.*include="?.*'.preg_quote($stylesheet, '/').'.*"?.*\}\]/', '', $tpl_source)  . "\n\n";
         }
 
         return $tpl_source;
