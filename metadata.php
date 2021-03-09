@@ -11,7 +11,8 @@ $aModule = array(
     'author'       => 'Aggrosoft GmbH',
     'extend'      => [
         \OxidEsales\Eshop\Core\ViewConfig::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderViewConfig::class,
-        \OxidEsales\Eshop\Core\UtilsView::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderUtilsView::class
+        \OxidEsales\Eshop\Core\UtilsView::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderUtilsView::class,
+        \OxidEsales\Eshop\Core\ViewHelper\StyleRenderer::class => \Aggrosoft\WebpackThemeLoader\Core\ViewHelper\WebpackThemeLoaderStyleRenderer::class
     ],
     'settings' => [
         ['group' => 'agwebpackthemeloader_main', 'name' => 'aJSBlacklist', 'type' => 'arr', 'value' => ['js/script.min.js', 'js/libs/photoswipe.min.js', 'js/libs/photoswipe-ui-default.min.js', 'js/libs/jquery.flexslider.min.js']],
