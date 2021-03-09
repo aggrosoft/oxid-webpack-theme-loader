@@ -3,6 +3,8 @@
 namespace Aggrosoft\WebpackThemeLoader\Core;
 
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 
 class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
 {
@@ -22,6 +24,15 @@ class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
         if ($entrypoints) {
             return $this->stripResourceDir($entrypoints->js);
         }
+    }
+
+
+    public function getWebpackCriticalCSSIdent ()
+    {
+        $moduleSettingBridge = ContainerFactory::getInstance()
+            ->getContainer()
+            ->get(ModuleSettingBridgeInterface::class);
+        return $moduleSettingBridge->get('sCriticalCSSIdent', 'agwebpackthemeloader');
     }
 
     protected function stripResourceDir ($files) {
