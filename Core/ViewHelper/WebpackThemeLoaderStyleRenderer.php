@@ -1,5 +1,7 @@
 <?php
 
+namespace Aggrosoft\WebpackThemeLoader\Core\ViewHelper;
+
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 
