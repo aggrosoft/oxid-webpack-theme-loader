@@ -8,3 +8,8 @@
 [{foreach from=$jsAssets item=asset}]
     [{oxstyle include=$asset|ltrim:'/'}]
 [{/foreach}]
+
+[{assign var=preloadAssets value=$oViewConf->getPreloadAssets()}]
+[{foreach from=$preloadAssets item=asset}]
+    [{oxeval var=$asset force=true}]
+[{/foreach}]

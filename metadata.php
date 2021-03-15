@@ -17,6 +17,7 @@ $aModule = array(
     'settings' => [
         ['group' => 'agwebpackthemeloader_main', 'name' => 'aJSBlacklist', 'type' => 'arr', 'value' => ['js/script.min.js', 'js/libs/photoswipe.min.js', 'js/libs/photoswipe-ui-default.min.js', 'js/libs/jquery.flexslider.min.js']],
         ['group' => 'agwebpackthemeloader_main', 'name' => 'aCSSBlacklist', 'type' => 'arr',   'value' => ['css/styles.min.css', 'css/libs/jquery.flexslider.min.css']],
+        ['group' => 'agwebpackthemeloader_main', 'name' => 'aPreloadAssets', 'type' => 'arr',   'value' => []],
         ['group' => 'agwebpackthemeloader_main', 'name' => 'sCriticalCSSIdent', 'type' => 'str',   'value' => '']
     ],
     'blocks' => [

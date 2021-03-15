@@ -35,6 +35,14 @@ class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
         return $moduleSettingBridge->get('sCriticalCSSIdent', 'agwebpackthemeloader');
     }
 
+    public function getPreloadAssets ()
+    {
+        $moduleSettingBridge = ContainerFactory::getInstance()
+            ->getContainer()
+            ->get(ModuleSettingBridgeInterface::class);
+        return $moduleSettingBridge->get('aPreloadAssets', 'agwebpackthemeloader');
+    }
+
     protected function stripResourceDir ($files) {
         $resourceDir = $this->getConfig()->getResourceDir(false);
         $dir = str_replace(getShopBasePath(), '/', $resourceDir);
