@@ -9,7 +9,7 @@ class WebpackThemeLoaderStyleRenderer extends WebpackThemeLoaderStyleRenderer_pa
 
     protected function formStylesOutput($styles)
     {
-        if ($this->getWebpackCriticalCSSIdent()) {
+        if (!isAdmin() && $this->getWebpackCriticalCSSIdent()) {
             $preparedStyles = [];
             $template = '<link rel="preload" type="text/css" href="%s" as="style" onload="this.onload=null;this.rel=\'stylesheet\'" />';
             foreach ($styles as $style) {
