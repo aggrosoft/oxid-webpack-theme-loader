@@ -8,3 +8,10 @@
 [{foreach from=$jsAssets item=asset}]
     [{oxscript include=$asset|ltrim:'/'}]
 [{/foreach}]
+
+[{if $oView->getIsOrderStep()}]
+    [{assign var=jsAssets value=$oViewConf->getWebpackJavascriptFiles('checkout')}]
+    [{foreach from=$jsAssets item=asset}]
+        [{oxscript include=$asset|ltrim:'/'}]
+    [{/foreach}]
+[{/if}]
