@@ -4,7 +4,7 @@ namespace Aggrosoft\WebpackThemeLoader\Core;
 
 use Aggrosoft\WebpackThemeLoader\Core\Smarty\WebpackThemeLoaderPrefilter;
 
-class WebpackThemeLoaderShopControl extends WebpackThemeLoaderWidgetControl_parent {
+class WebpackThemeLoaderShopControl extends WebpackThemeLoaderShopControl_parent {
 
     protected $_blSmartySetup = false;
 
