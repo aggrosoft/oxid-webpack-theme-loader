@@ -50,7 +50,7 @@ class WebpackThemeLoaderPrefilter
         $moduleSettingBridge = ContainerFactory::getInstance()
             ->getContainer()
             ->get(ModuleSettingBridgeInterface::class);
-        return $moduleSettingBridge->get('aJSBlacklist', 'blInlineSVGIcons');
+        return $moduleSettingBridge->get('blInlineSVGIcons', 'agwebpackthemeloader');
     }
 }
 

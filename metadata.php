@@ -12,6 +12,7 @@ $aModule = array(
     'extend'      => [
         \OxidEsales\Eshop\Core\ViewConfig::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderViewConfig::class,
         \OxidEsales\Eshop\Core\WidgetControl::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderWidgetControl::class,
+        \OxidEsales\Eshop\Core\ShopControl::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderShopControl::class,
         \OxidEsales\Eshop\Core\UtilsView::class => \Aggrosoft\WebpackThemeLoader\Core\WebpackThemeLoaderUtilsView::class,
         \OxidEsales\Eshop\Core\ViewHelper\StyleRenderer::class => \Aggrosoft\WebpackThemeLoader\Core\ViewHelper\WebpackThemeLoaderStyleRenderer::class
     ],
