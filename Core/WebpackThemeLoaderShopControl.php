@@ -3,20 +3,27 @@
 namespace Aggrosoft\WebpackThemeLoader\Core;
 
 use Aggrosoft\WebpackThemeLoader\Core\Smarty\WebpackThemeLoaderPrefilter;
+use OxidEsales\EshopCommunity\Internal\Framework\Templating\TemplateRendererBridgeInterface;
 
 class WebpackThemeLoaderShopControl extends WebpackThemeLoaderShopControl_parent {
 
     protected $_blSmartySetup = false;
 
-    private function getRenderer()
+    protected function _render($view) // phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
+    {
+        $this->setupRenderer();
+        return parent::_render($view);
+    }
+
+    private function setupRenderer()
     {
         $renderer = $this->getContainer()
             ->get(TemplateRendererBridgeInterface::class)
             ->getTemplateRenderer();
 
         if (!$this->_blSmartySetup) {
-            $engine = $renderer->getEngine();
-            $engine->register_prefilter([WebpackThemeLoaderPrefilter::class, 'prefilter']);
+            $engine = $renderer->getTemplateEngine();
+            $engine->getSmarty()->register_prefilter([WebpackThemeLoaderPrefilter::class, 'prefilter']);
             $this->_blSmartySetup = true;
         }
 

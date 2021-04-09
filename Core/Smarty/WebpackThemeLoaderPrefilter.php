@@ -20,10 +20,9 @@ class WebpackThemeLoaderPrefilter
             $tpl_source = preg_replace('/\[\{oxstyle.*include="?.*'.preg_quote($stylesheet, '/').'.*"?.*\}\]/', '', $tpl_source)  . "\n\n";
         }
 
-        // @TODO: add option to use this
         if (self::inlineSVGIcons()) {
-            $tpl_source = preg_replace('/<i.*class=".*fa .*fa-([a-zA-Z-]+)(.*)".*><\/i>/m', '<svg class="svg-icon svg-inline--fa$2" aria-hidden="true"><use xlink:href="#fas-$1"></use></svg>', $tpl_source);
-            $tpl_source = preg_replace('/<i.*class=".*(fa[a-z]).*fa-([a-zA-Z-]+)(.*)".*><\/i>/m', '<svg class="svg-icon svg-inline--fa$3" aria-hidden="true"><use xlink:href="#$1-$2"></use></svg>', $tpl_source);
+            $tpl_source = preg_replace('/<i.*?class=".*?fa .*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$2" aria-hidden="true"><use xlink:href="#fas-$1"></use></svg>', $tpl_source);
+            $tpl_source = preg_replace('/<i.*?class=".*?(fa[a-z]).*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$3" aria-hidden="true"><use xlink:href="#$1-$2"></use></svg>', $tpl_source);
         }
 
         return $tpl_source;
