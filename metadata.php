@@ -25,6 +25,7 @@ $aModule = array(
     ],
     'blocks' => [
         ['template' => 'layout/base.tpl','block'=>'base_js','file'=>'/views/blocks/base_js.tpl'],
-        ['template' => 'layout/base.tpl','block'=>'base_style','file'=>'/views/blocks/base_style.tpl']
+        ['template' => 'layout/base.tpl','block'=>'base_style','file'=>'/views/blocks/base_style.tpl'],
+        ['template' => 'layout/base.tpl','block'=>'base_style','file'=>'/views/blocks/theme_svg_icons.tpl']
     ]
 );

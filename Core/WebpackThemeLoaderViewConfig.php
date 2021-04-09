@@ -43,6 +43,13 @@ class WebpackThemeLoaderViewConfig extends WebpackThemeLoaderViewConfig_parent
         return $moduleSettingBridge->get('aPreloadAssets', 'agwebpackthemeloader');
     }
 
+    public function inlineSvgIcons () {
+        $moduleSettingBridge = ContainerFactory::getInstance()
+            ->getContainer()
+            ->get(ModuleSettingBridgeInterface::class);
+        return $moduleSettingBridge->get('blInlineSVGIcons', 'agwebpackthemeloader');
+    }
+
     protected function stripResourceDir ($files) {
         $resourceDir = $this->getConfig()->getResourceDir(false);
         $dir = str_replace(getShopBasePath(), '/', $resourceDir);
