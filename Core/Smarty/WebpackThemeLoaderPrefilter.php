@@ -9,22 +9,23 @@ class WebpackThemeLoaderPrefilter
 {
     public static function prefilter($tpl_source, &$smarty)
     {
-        $scripts = self::getJSBlacklist();
-        $css = self::getCSSBlacklist();
+        if (!isAdmin()) {
+            $scripts = self::getJSBlacklist();
+            $css = self::getCSSBlacklist();
 
-        foreach($scripts as $script) {
-            $tpl_source = preg_replace('/\[\{oxscript.*include="?.*'.preg_quote($script, '/').'.*"?.*\}\]/', '', $tpl_source) . "\n\n";
+            foreach($scripts as $script) {
+                $tpl_source = preg_replace('/\[\{oxscript.*include="?.*'.preg_quote($script, '/').'.*"?.*\}\]/', '', $tpl_source) . "\n\n";
+            }
+
+            foreach($css as $stylesheet) {
+                $tpl_source = preg_replace('/\[\{oxstyle.*include="?.*'.preg_quote($stylesheet, '/').'.*"?.*\}\]/', '', $tpl_source)  . "\n\n";
+            }
+
+            if (self::inlineSVGIcons()) {
+                $tpl_source = preg_replace('/<i .*?class=".*?fa .*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$2" aria-hidden="true"><use xlink:href="#fas-$1"></use></svg>', $tpl_source);
+                $tpl_source = preg_replace('/<i .*?class=".*?(fa[a-z]).*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$3" aria-hidden="true"><use xlink:href="#$1-$2"></use></svg>', $tpl_source);
+            }
         }
-
-        foreach($css as $stylesheet) {
-            $tpl_source = preg_replace('/\[\{oxstyle.*include="?.*'.preg_quote($stylesheet, '/').'.*"?.*\}\]/', '', $tpl_source)  . "\n\n";
-        }
-
-        if (self::inlineSVGIcons()) {
-            $tpl_source = preg_replace('/<i .*?class=".*?fa .*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$2" aria-hidden="true"><use xlink:href="#fas-$1"></use></svg>', $tpl_source);
-            $tpl_source = preg_replace('/<i .*?class=".*?(fa[a-z]).*?fa-([a-zA-Z-]+)(.*?)".*?><\/i>/m', '<svg class="svg-icon svg-inline--fa$3" aria-hidden="true"><use xlink:href="#$1-$2"></use></svg>', $tpl_source);
-        }
-
         return $tpl_source;
     }
 
